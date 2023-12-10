@@ -21,12 +21,13 @@ docker build -t my-custom-image:latest .
 
 ## Alternative use
 
-The image is also prebuilt on Docker Hub and can be used as `spurin/rootshell:latest`
+The image is also prebuilt on Docker Hub and can be used as `spurin/rootshell:latest` - see build.sh for the multiarch build process
 
 ## Running a Container
 
 ```sh
-docker run -it --rm my-custom-image:latest
+docker run -it --rm spurin/rootshell:latest
+
 # When in the shell, run the following to gain root access
 /rootshell
 ```
