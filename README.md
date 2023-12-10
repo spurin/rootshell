@@ -23,13 +23,17 @@ docker build -t my-custom-image:latest .
 
 The image is also prebuilt on Docker Hub and can be used as `spurin/rootshell:latest` - see build.sh for the multiarch build process
 
-## Running a Container
+## Demonstrating root escalation with Docker
 
 ```sh
-docker run -it --rm spurin/rootshell:latest
-
-# When in the shell, run the following to gain root access
-/rootshell
+% docker run -it --rm --user 1000:1000 spurin/rootshell:latest
+nonpriv@00eac4da6562:/$ 
+nonpriv@00eac4da6562:/$ id
+uid=1000(nonpriv) gid=1000(nonpriv) groups=1000(nonpriv)
+nonpriv@00eac4da6562:/$ /rootshell
+root@00eac4da6562:/#
+root@00eac4da6562:/# id
+uid=0(root) gid=1000(nonpriv) groups=1000(nonpriv)
 ```
 
 ## Security Notice
